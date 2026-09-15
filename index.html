@@ -1,0 +1,582 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Headlight Revival — Fort Worth Headlight Restoration</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=Archivo+Expanded:wght@600;700;800&display=swap" rel="stylesheet">
+<style>
+
+  :root{
+    --ink:#0c0d10;
+    --panel:#15171b;
+    --panel-raised:#1c1f24;
+    --chrome:#c7ccd4;
+    --chrome-dim:#8a8f98;
+    --haze:#d9a541;
+    --haze-deep:#8a5a1e;
+    --clear:#eaf3ff;
+    --clear-glow:#bfe0ff;
+    --line:rgba(199,204,212,0.12);
+    --radius-panel: 2px;
+    --maxw: 1180px;
+  }
+
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  body{
+    margin:0;
+    background:var(--ink);
+    color:var(--chrome);
+    font-family:'Archivo',sans-serif;
+    font-weight:400;
+    line-height:1.55;
+    -webkit-font-smoothing:antialiased;
+  }
+  h1,h2,h3,.display{
+    font-family:'Archivo Expanded',sans-serif;
+    color:#f5f6f8;
+    margin:0;
+    letter-spacing:0.01em;
+  }
+  p{margin:0;}
+  a{color:inherit;text-decoration:none;}
+  img,svg{display:block;max-width:100%;}
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 28px;}
+  section{position:relative;}
+
+  :focus-visible{
+    outline:2px solid var(--clear-glow);
+    outline-offset:3px;
+  }
+
+  @media (prefers-reduced-motion: reduce){
+    *{animation-duration:0.001ms !important; animation-iteration-count:1 !important; transition-duration:0.001ms !important;}
+  }
+
+  /* ---------- HEADER ---------- */
+  header{
+    position:sticky; top:0; z-index:50;
+    background:rgba(12,13,16,0.86);
+    backdrop-filter:blur(10px);
+    border-bottom:1px solid var(--line);
+  }
+  .header-row{
+    display:flex; align-items:center; justify-content:space-between;
+    padding:16px 28px;
+    max-width:var(--maxw); margin:0 auto;
+  }
+  .logo{
+    display:flex; align-items:center; gap:10px;
+    font-family:'Archivo Expanded',sans-serif;
+    font-size:19px; font-weight:700; color:#f5f6f8;
+  }
+  .logo-mark{width:26px;height:26px;flex-shrink:0;}
+  .header-cta{
+    display:flex; align-items:center; gap:22px;
+  }
+  .phone-link{
+    font-size:15px; font-weight:600; color:var(--clear);
+    display:flex; align-items:center; gap:8px;
+  }
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:8px;
+    padding:12px 22px;
+    font-family:'Archivo',sans-serif; font-weight:600; font-size:14.5px;
+    border-radius:3px; cursor:pointer; border:1px solid transparent;
+    transition:transform 0.15s ease, background 0.2s ease, border-color 0.2s ease;
+    white-space:nowrap;
+  }
+  .btn-primary{
+    background:linear-gradient(135deg,#ffd27a,var(--haze) 70%);
+    color:#1a1200;
+  }
+  .btn-primary:hover{transform:translateY(-1px);}
+  .btn-ghost{
+    border-color:rgba(199,204,212,0.3);
+    color:var(--chrome);
+    background:transparent;
+  }
+  .btn-ghost:hover{border-color:var(--clear-glow); color:var(--clear);}
+  .header-cta .btn{padding:10px 18px; font-size:14px;}
+
+  @media (max-width:720px){
+    .phone-link span.phone-text{display:none;}
+  }
+
+  /* ---------- HERO ---------- */
+  .hero{
+    padding:88px 0 96px;
+    overflow:hidden;
+    background:
+      radial-gradient(1100px 620px at 78% -10%, rgba(217,165,65,0.16), transparent 60%),
+      radial-gradient(900px 560px at 15% 110%, rgba(191,224,255,0.08), transparent 60%),
+      var(--ink);
+  }
+  .hero-grid{
+    display:grid;
+    grid-template-columns:1.05fr 0.95fr;
+    gap:56px;
+    align-items:center;
+  }
+  .eyebrow-line{
+    display:flex; align-items:center; gap:10px;
+    color:var(--chrome-dim); font-size:13.5px; margin-bottom:22px;
+  }
+  .eyebrow-line .dot{width:6px;height:6px;border-radius:50%;background:var(--haze);box-shadow:0 0 10px 2px rgba(217,165,65,0.6);}
+  .hero h1{
+    font-size:clamp(38px,5.4vw,62px);
+    line-height:1.04;
+    font-weight:800;
+  }
+  .hero h1 .clear-word{
+    background:linear-gradient(90deg,var(--haze),var(--clear) 85%);
+    -webkit-background-clip:text; background-clip:text; color:transparent;
+  }
+  .hero-sub{
+    margin-top:22px;
+    font-size:17.5px;
+    color:var(--chrome);
+    max-width:46ch;
+  }
+  .hero-actions{
+    margin-top:34px;
+    display:flex; gap:16px; flex-wrap:wrap;
+  }
+  .hero-meta{
+    margin-top:38px;
+    display:flex; gap:30px; flex-wrap:wrap;
+  }
+  .hero-meta div{font-size:13.5px; color:var(--chrome-dim);}
+  .hero-meta strong{display:block; font-size:22px; color:#f5f6f8; font-family:'Archivo Expanded',sans-serif; font-weight:700;}
+
+  /* Lens visual */
+  .lens-stage{
+    position:relative;
+    aspect-ratio:1/1.02;
+    max-width:460px;
+    margin:0 auto;
+  }
+  .lens-stage svg{width:100%; height:100%;}
+  .lens-caption{
+    position:absolute; bottom:14px; left:0; right:0;
+    display:flex; justify-content:space-between;
+    padding:0 10px;
+    font-size:12.5px; letter-spacing:0.03em; color:var(--chrome-dim);
+  }
+  .lens-caption span:last-child{color:var(--clear-glow);}
+
+  /* ---------- TRUST STRIP ---------- */
+  .trust-strip{
+    border-top:1px solid var(--line);
+    border-bottom:1px solid var(--line);
+    background:var(--panel);
+  }
+  .trust-row{
+    display:flex; flex-wrap:wrap; gap:34px; justify-content:space-between;
+    padding:26px 0; font-size:14px; color:var(--chrome-dim);
+  }
+  .trust-row div{display:flex; align-items:center; gap:10px;}
+  .trust-row svg{width:18px;height:18px; flex-shrink:0; color:var(--haze);}
+
+  /* ---------- SECTION HEADERS ---------- */
+  .section-pad{padding:96px 0;}
+  .section-head{max-width:640px; margin-bottom:52px;}
+  .section-head h2{font-size:clamp(28px,3.6vw,40px); font-weight:700; line-height:1.14;}
+  .section-head p{margin-top:16px; font-size:16px; color:var(--chrome-dim); max-width:52ch;}
+
+  /* ---------- SERVICES ---------- */
+  .services{background:var(--ink);}
+  .service-list{
+    display:grid; grid-template-columns:repeat(3,1fr); gap:1px;
+    background:var(--line);
+    border:1px solid var(--line);
+  }
+  .service-card{
+    background:var(--panel);
+    padding:34px 28px;
+    display:flex; flex-direction:column; gap:14px;
+  }
+  .service-card .num{
+    font-family:'Archivo Expanded',sans-serif; font-size:13px; color:var(--haze); font-weight:700;
+  }
+  .service-card h3{font-size:20px; font-weight:600;}
+  .service-card p{color:var(--chrome-dim); font-size:14.5px;}
+  .service-card .price{
+    margin-top:auto; padding-top:14px; font-size:14px; color:var(--clear-glow); font-weight:600;
+  }
+  @media (max-width:860px){ .service-list{grid-template-columns:1fr;} }
+
+  /* ---------- PROCESS ---------- */
+  .process{background:var(--panel-raised);}
+  .process-list{
+    display:grid; grid-template-columns:repeat(4,1fr); gap:0;
+    position:relative;
+  }
+  .process-list::before{
+    content:"";
+    position:absolute; top:19px; left:6%; right:6%; height:1px;
+    background:linear-gradient(90deg,var(--haze-deep),var(--haze),var(--clear-glow));
+    opacity:0.5;
+  }
+  .process-step{padding:0 20px 0 0; position:relative;}
+  .process-step .step-index{
+    width:38px;height:38px;border-radius:50%;
+    background:var(--ink); border:1px solid rgba(199,204,212,0.25);
+    display:flex;align-items:center;justify-content:center;
+    font-family:'Archivo Expanded',sans-serif; font-weight:700; font-size:14px;
+    margin-bottom:22px; position:relative; z-index:2; color:#f5f6f8;
+  }
+  .process-step h3{font-size:17px; font-weight:600; margin-bottom:8px;}
+  .process-step p{font-size:14px; color:var(--chrome-dim);}
+  @media (max-width:860px){
+    .process-list{grid-template-columns:1fr; gap:36px;}
+    .process-list::before{display:none;}
+  }
+
+  /* ---------- WHY / STATS ---------- */
+  .why{background:var(--ink);}
+  .why-grid{display:grid; grid-template-columns:1fr 1fr; gap:64px; align-items:start;}
+  .why-copy h2{font-size:clamp(26px,3.4vw,34px); font-weight:700; margin-bottom:18px;}
+  .why-copy p{color:var(--chrome-dim); font-size:15.5px; margin-bottom:16px; max-width:48ch;}
+  .why-list{list-style:none; padding:0; margin:26px 0 0; display:flex; flex-direction:column; gap:16px;}
+  .why-list li{display:flex; gap:14px; align-items:flex-start; font-size:15px; color:var(--chrome);}
+  .why-list svg{width:20px;height:20px;flex-shrink:0;margin-top:2px;color:var(--haze);}
+  .stat-panel{
+    background:var(--panel); border:1px solid var(--line); padding:38px;
+    display:grid; grid-template-columns:1fr 1fr; gap:32px;
+  }
+  .stat-panel div strong{
+    display:block; font-family:'Archivo Expanded',sans-serif; font-size:38px; font-weight:800; color:#f5f6f8;
+  }
+  .stat-panel div span{font-size:13.5px; color:var(--chrome-dim);}
+  @media (max-width:860px){ .why-grid{grid-template-columns:1fr; gap:40px;} }
+
+  /* ---------- TESTIMONIALS ---------- */
+  .testimonials{background:var(--panel-raised);}
+  .t-grid{display:grid; grid-template-columns:repeat(3,1fr); gap:22px;}
+  .t-card{
+    background:var(--panel); border:1px solid var(--line); padding:30px;
+    display:flex; flex-direction:column; gap:18px;
+  }
+  .t-stars{color:var(--haze); font-size:15px; letter-spacing:2px;}
+  .t-card p.quote{font-size:15px; color:var(--chrome); line-height:1.6;}
+  .t-name{font-size:13.5px; color:var(--chrome-dim); font-weight:600;}
+  .t-note{
+    margin-top:30px; font-size:12.5px; color:var(--chrome-dim); border:1px dashed rgba(199,204,212,0.25);
+    padding:12px 16px;
+  }
+  @media (max-width:860px){ .t-grid{grid-template-columns:1fr;} }
+
+  /* ---------- CTA BAND ---------- */
+  .cta-band{
+    background:
+      radial-gradient(700px 340px at 20% 30%, rgba(217,165,65,0.18), transparent 65%),
+      radial-gradient(700px 340px at 85% 70%, rgba(191,224,255,0.10), transparent 65%),
+      var(--ink);
+    border-top:1px solid var(--line); border-bottom:1px solid var(--line);
+    padding:88px 0;
+    text-align:center;
+  }
+  .cta-band h2{font-size:clamp(28px,4vw,42px); font-weight:800; max-width:16ch; margin:0 auto 18px;}
+  .cta-band p{color:var(--chrome-dim); font-size:16px; max-width:48ch; margin:0 auto;}
+  .cta-band .hero-actions{justify-content:center; margin-top:32px;}
+
+  /* ---------- FOOTER ---------- */
+  footer{background:var(--panel); padding:56px 0 32px;}
+  .footer-grid{
+    display:grid; grid-template-columns:1.3fr 1fr 1fr; gap:44px;
+    padding-bottom:36px; border-bottom:1px solid var(--line);
+  }
+  .footer-brand .logo{margin-bottom:14px;}
+  .footer-brand p{color:var(--chrome-dim); font-size:14px; max-width:34ch;}
+  .footer-col h4{font-size:13.5px; color:#f5f6f8; font-weight:600; margin-bottom:16px;}
+  .footer-col a, .footer-col p{
+    display:block; font-size:14.5px; color:var(--chrome-dim); margin-bottom:10px;
+  }
+  .footer-col a:hover{color:var(--clear-glow);}
+  .footer-bottom{
+    display:flex; justify-content:space-between; flex-wrap:wrap; gap:12px;
+    padding-top:24px; font-size:13px; color:var(--chrome-dim);
+  }
+  @media (max-width:760px){ .footer-grid{grid-template-columns:1fr; gap:30px;} }
+  @media (max-width:860px){ .hero-grid{grid-template-columns:1fr;} .lens-stage{max-width:340px;margin-top:20px;} }
+
+</style>
+</head>
+<body>
+
+<header>
+  <div class="header-row">
+    <a class="logo" href="#top">
+      <svg class="logo-mark" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <path d="M2 13C2 13 6 6 13 6C20 6 24 13 24 13C24 13 20 20 13 20C6 20 2 13 2 13Z" stroke="url(#lg)" stroke-width="1.6"/>
+        <circle cx="13" cy="13" r="3.4" fill="url(#lg)"/>
+        <defs>
+          <linearGradient id="lg" x1="2" y1="13" x2="24" y2="13" gradientUnits="userSpaceOnUse">
+            <stop stop-color="#D9A541"/>
+            <stop offset="1" stop-color="#EAF3FF"/>
+          </linearGradient>
+        </defs>
+      </svg>
+      Headlight Revival
+    </a>
+    <div class="header-cta">
+      <a class="phone-link" href="tel:+16823656458">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.6 0 1 .4 1 1V20c0 .6-.4 1-1 1C10.6 21 3 13.4 3 4c0-.6.4-1 1-1h3.4c.6 0 1 .4 1 1 0 1.3.2 2.5.6 3.6.1.4 0 .8-.2 1L6.6 10.8z" fill="currentColor"/></svg>
+        <span class="phone-text">682-365-6458</span>
+      </a>
+      <a class="btn btn-primary" href="#quote">Get Free Quote</a>
+    </div>
+  </div>
+</header>
+
+<main id="top">
+
+  <!-- HERO -->
+  <section class="hero">
+    <div class="wrap hero-grid">
+      <div>
+        <div class="eyebrow-line"><span class="dot"></span> Fort Worth, Texas — Mobile &amp; In-Shop Service</div>
+        <h1>Foggy lenses<br>don't stand a <span class="clear-word">chance.</span></h1>
+        <p class="hero-sub">Headlight Revival restores oxidized, yellowed headlights to a like-new, glass-clear finish — in about an hour, for a fraction of the cost of replacement. Better light output, better looks, better resale value.</p>
+        <div class="hero-actions">
+          <a class="btn btn-primary" href="#quote">Get Free Quote</a>
+          <a class="btn btn-ghost" href="tel:+16823656458">Call 682-365-6458</a>
+        </div>
+        <div class="hero-meta">
+          <div><strong>60 min</strong>Average turnaround</div>
+          <div><strong>UV-Sealed</strong>Finish holds for years</div>
+          <div><strong>We Come to You</strong>Mobile service in DFW</div>
+        </div>
+      </div>
+
+      <div class="lens-stage">
+        <svg viewBox="0 0 400 420" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <clipPath id="lensClip">
+              <path d="M40 210C40 100 130 30 210 30C300 30 370 100 370 210C370 320 290 390 200 390C110 390 40 320 40 210Z"/>
+            </clipPath>
+            <radialGradient id="hazyGrad" cx="30%" cy="35%" r="80%">
+              <stop offset="0%" stop-color="#e8c988"/>
+              <stop offset="55%" stop-color="#b8863a"/>
+              <stop offset="100%" stop-color="#5f3d15"/>
+            </radialGradient>
+            <radialGradient id="clearGrad" cx="65%" cy="30%" r="85%">
+              <stop offset="0%" stop-color="#ffffff"/>
+              <stop offset="45%" stop-color="#cfe7ff"/>
+              <stop offset="100%" stop-color="#6f9fce"/>
+            </radialGradient>
+            <linearGradient id="beamGrad" x1="0" y1="0" x2="1" y2="0">
+              <stop offset="0%" stop-color="#EAF3FF" stop-opacity="0"/>
+              <stop offset="100%" stop-color="#EAF3FF" stop-opacity="0.55"/>
+            </linearGradient>
+          </defs>
+
+          <g clip-path="url(#lensClip)">
+            <rect x="40" y="30" width="165" height="360" fill="url(#hazyGrad)"/>
+            <rect x="205" y="30" width="165" height="360" fill="url(#clearGrad)"/>
+            <g opacity="0.5" stroke="#3a2610" stroke-width="1">
+              <line x1="55" y1="80" x2="195" y2="95"/>
+              <line x1="50" y1="150" x2="200" y2="160"/>
+              <line x1="55" y1="230" x2="198" y2="235"/>
+              <line x1="60" y1="300" x2="195" y2="305"/>
+            </g>
+            <g opacity="0.65">
+              <circle cx="255" cy="150" r="34" fill="#ffffff"/>
+              <circle cx="255" cy="150" r="34" fill="none" stroke="#ffffff" stroke-width="8" opacity="0.4"/>
+              <circle cx="330" cy="210" r="4" fill="#ffffff"/>
+              <circle cx="220" cy="260" r="3" fill="#ffffff"/>
+            </g>
+            <rect x="205" y="0" width="4" height="420" fill="#0c0d10"/>
+          </g>
+
+          <path d="M40 210C40 100 130 30 210 30C300 30 370 100 370 210C370 320 290 390 200 390C110 390 40 320 40 210Z"
+                fill="none" stroke="rgba(234,243,255,0.25)" stroke-width="1.5"/>
+        </svg>
+        <div class="lens-caption">
+          <span>Before — oxidized</span>
+          <span>After — restored</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TRUST STRIP -->
+  <div class="trust-strip">
+    <div class="wrap trust-row">
+      <div><svg viewBox="0 0 24 24" fill="none"><path d="M12 2l7 4v6c0 5-3.4 8.4-7 10-3.6-1.6-7-5-7-10V6l7-4z" stroke="currentColor" stroke-width="1.6"/></svg> Locally owned, Fort Worth</div>
+      <div><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"/></svg> Satisfaction guaranteed</div>
+      <div><svg viewBox="0 0 24 24" fill="none"><circle cx="12" cy="12" r="9" stroke="currentColor" stroke-width="1.6"/><path d="M12 7v5l3.5 2" stroke="currentColor" stroke-width="1.6"/></svg> Most jobs done same-day</div>
+      <div><svg viewBox="0 0 24 24" fill="none"><path d="M3 12h4l2-7 4 14 2-7h6" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg> DOT-safer visibility at night</div>
+    </div>
+  </div>
+
+  <!-- SERVICES -->
+  <section class="services section-pad" id="services">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>Built around one job: crystal-clear lenses</h2>
+        <p>We keep the menu focused so every job gets full attention. Pick a service below or ask us what your car needs.</p>
+      </div>
+      <div class="service-list">
+        <div class="service-card">
+          <span class="num">01</span>
+          <h3>Headlight Restoration</h3>
+          <p>Wet-sand, polish, and UV-seal to remove yellowing and cloudiness, restoring clarity and night visibility.</p>
+          <span class="price">$90 per car</span>
+        </div>
+        <div class="service-card">
+          <span class="num">02</span>
+          <h3>Ceramic Headlight Coating</h3>
+          <p>A hydrophobic ceramic topcoat that resists UV damage, road grime, and yellowing years longer than stock clear coat.</p>
+          <span class="price">From $140 per car</span>
+        </div>
+        <div class="service-card">
+          <span class="num">03</span>
+          <h3>Mobile Service</h3>
+          <p>We bring the full setup to your home, office, or dealership lot anywhere in the Fort Worth area.</p>
+          <span class="price">No extra travel fee, DFW metro</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- PROCESS -->
+  <section class="process section-pad">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What happens to your headlights</h2>
+        <p>A four-stage process refined over hundreds of restorations — no shortcuts, no drilling.</p>
+      </div>
+      <div class="process-list">
+        <div class="process-step">
+          <div class="step-index">1</div>
+          <h3>Inspect &amp; assess</h3>
+          <p>We check lens depth and oxidation level to confirm restoration will get you a clear, durable result.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-index">2</div>
+          <h3>Wet sand</h3>
+          <p>Progressive grit sanding removes the oxidized outer layer without damaging the lens underneath.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-index">3</div>
+          <h3>Polish &amp; buff</h3>
+          <p>A machine polish brings back true optical clarity and gloss, stage by stage.</p>
+        </div>
+        <div class="process-step">
+          <div class="step-index">4</div>
+          <h3>UV-protective seal</h3>
+          <p>A clear UV sealant locks in the finish, so oxidation takes far longer to return.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY -->
+  <section class="why section-pad">
+    <div class="wrap why-grid">
+      <div class="why-copy">
+        <h2>Why Fort Worth drivers choose Headlight Revival</h2>
+        <p>Texas sun is hard on plastic lenses. UV exposure oxidizes the clear coat faster here than almost anywhere else in the country — which means cloudy headlights aren't just cosmetic, they're a real visibility issue at night.</p>
+        <ul class="why-list">
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Up to 70% more light output after restoration, improving night driving safety</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> A fraction of the cost of OEM headlight replacement</li>
+          <li><svg viewBox="0 0 24 24" fill="none"><path d="M4 12l5 5L20 6" stroke="currentColor" stroke-width="2" stroke-linecap="round"/></svg> Cleaner headlights help pass inspection and boost resale value</li>
+        </ul>
+      </div>
+      <div class="stat-panel">
+        <div><strong>1 hr</strong><span>Typical job time, most vehicles</span></div>
+        <div><strong>70%+</strong><span>Average light output improvement</span></div>
+        <div><strong>$90</strong><span>Starting price per car</span></div>
+        <div><strong>DFW</strong><span>Mobile service coverage area</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- TESTIMONIALS -->
+  <section class="testimonials section-pad">
+    <div class="wrap">
+      <div class="section-head">
+        <h2>What Fort Worth is saying</h2>
+        <p>A few notes from recent customers.</p>
+      </div>
+      <div class="t-grid">
+        <div class="t-card">
+          <div class="t-stars">★★★★★</div>
+          <p class="quote">My headlights looked brand new within the hour. Night driving feels completely different now — I can actually see the road.</p>
+          <div class="t-name">— Placeholder review, swap with a real one</div>
+        </div>
+        <div class="t-card">
+          <div class="t-stars">★★★★★</div>
+          <p class="quote">Came to my office on a lunch break, restored both headlights while I worked, and the price was way less than I expected.</p>
+          <div class="t-name">— Placeholder review, swap with a real one</div>
+        </div>
+        <div class="t-card">
+          <div class="t-stars">★★★★★</div>
+          <p class="quote">Professional, on time, and the difference is night and day — literally. Would send every friend with foggy headlights here.</p>
+          <div class="t-name">— Placeholder review, swap with a real one</div>
+        </div>
+      </div>
+      <div class="t-note">These three testimonials are placeholders standing in for your real Google reviews. Send them over and I'll swap in the actual quotes and names.</div>
+    </div>
+  </section>
+
+  <!-- CTA BAND -->
+  <section class="cta-band" id="quote">
+    <div class="wrap">
+      <h2>Ready to see clearly again?</h2>
+      <p>Free quotes, most jobs finished same day. Text, call, or email — whatever's easiest.</p>
+      <div class="hero-actions">
+        <a class="btn btn-primary" href="tel:+16823656458">Call 682-365-6458</a>
+        <a class="btn btn-ghost" href="mailto:headlightrevivall@gmail.com">Email Us</a>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <a class="logo" href="#top">
+          <svg class="logo-mark" viewBox="0 0 26 26" fill="none" xmlns="http://www.w3.org/2000/svg">
+            <path d="M2 13C2 13 6 6 13 6C20 6 24 13 24 13C24 13 20 20 13 20C6 20 2 13 2 13Z" stroke="url(#lg2)" stroke-width="1.6"/>
+            <circle cx="13" cy="13" r="3.4" fill="url(#lg2)"/>
+            <defs>
+              <linearGradient id="lg2" x1="2" y1="13" x2="24" y2="13" gradientUnits="userSpaceOnUse">
+                <stop stop-color="#D9A541"/>
+                <stop offset="1" stop-color="#EAF3FF"/>
+              </linearGradient>
+            </defs>
+          </svg>
+          Headlight Revival
+        </a>
+        <p>Headlight restoration and ceramic protection, done right, based in Fort Worth, Texas.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Contact</h4>
+        <a href="tel:+16823656458">682-365-6458</a>
+        <a href="mailto:headlightrevivall@gmail.com">headlightrevivall@gmail.com</a>
+        <p>Fort Worth, TX</p>
+      </div>
+      <div class="footer-col">
+        <h4>Services</h4>
+        <a href="#services">Headlight Restoration</a>
+        <a href="#services">Ceramic Coating</a>
+        <a href="#services">Mobile Service</a>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span>© 2026 Headlight Revival. All rights reserved.</span>
+      <span>Fort Worth, Texas</span>
+    </div>
+  </div>
+</footer>
+
+</body>
+</html>
